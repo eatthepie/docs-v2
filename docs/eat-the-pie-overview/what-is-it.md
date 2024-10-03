@@ -2,4 +2,4 @@
 slug: /
 ---
 
-# What Is It?
+# The World Lottery
