@@ -2,44 +2,34 @@ import type { SidebarsConfig } from "@docusaurus/plugin-content-docs";
 
 const sidebars: SidebarsConfig = {
   tutorialSidebar: [
+    "eat-the-pie-overview/what-is-it",
     {
       type: "category",
-      label: "Eat The Pie Overview",
-      items: ["eat-the-pie-overview/what-is-it"],
-      collapsed: false,
+      label: "🎮 Gameplay",
+      items: ["gameplay/rules", "gameplay/prizes", "gameplay/odds"],
+      collapsed: true,
     },
     {
       type: "category",
-      label: "Game & Rules",
-      items: [
-        "game-rules/overview",
-        "game-rules/how-to-play",
-        "game-rules/rules",
-        "game-rules/claiming-prizes",
-        "game-rules/nft-minting",
-      ],
-      collapsed: false,
+      label: "🛡️ Security",
+      items: ["security/drawing-numbers", "security/open-source"],
+      collapsed: true,
     },
     {
       type: "category",
-      label: "Security",
-      items: [
-        "security/open-source",
-        "security/not-upgradable",
-        "security/drawing-delay",
-        "security/vdf-randomness",
-      ],
-      collapsed: false,
+      label: "📖 How to Play",
+      items: ["how-to-play/website", "how-to-play/cli"],
+      collapsed: true,
     },
     {
       type: "category",
-      label: "Smart Contract Modules",
+      label: "💻 Smart Contracts",
       items: [
         "smart-contracts/lottery-contract",
         "smart-contracts/vdf-contract",
         "smart-contracts/nft-contract",
       ],
-      collapsed: false,
+      collapsed: true,
     },
     "deployments/main",
     "links/main",
