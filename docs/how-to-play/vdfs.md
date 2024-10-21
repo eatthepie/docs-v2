@@ -1,1 +1,1 @@
-# VDFs
+# VDF Proving

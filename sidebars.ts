@@ -18,7 +18,12 @@ const sidebars: SidebarsConfig = {
     {
       type: "category",
       label: "📖 How to Play",
-      items: ["how-to-play/website", "how-to-play/cli", "how-to-play/vdfs"],
+      items: [
+        "how-to-play/overview",
+        "how-to-play/website",
+        "how-to-play/cli",
+        "how-to-play/vdfs",
+      ],
       collapsed: true,
     },
     {
@@ -27,6 +32,7 @@ const sidebars: SidebarsConfig = {
       items: [
         "smart-contracts/lottery-contract",
         "smart-contracts/vdf-contract",
+        "smart-contracts/pietrzak-library",
         "smart-contracts/nft-contract",
       ],
       collapsed: true,
