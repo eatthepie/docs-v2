@@ -24,6 +24,6 @@ Eat the Pie isn't just another lottery—it's an autonomous system that redefine
 - 🎮 [Gameplay](gameplay/overview.md) - The rules and mechanics of the game
 - 🛡️ [Security](security.md) - How Ethereum and VDFs create an impenetrable lottery
 - 📖 [How to Play](how-to-play/website.md) - A step-by-step guide to participating
-- 💻 [Smart Contract Modules](smart-contract-modules.md) - The technical architecture behind the scenes
+- ⛓️ [Smart Contract Modules](smart-contract-modules.md) - The technical architecture behind the scenes
 - 🌐 [Deployments](deployments.md) - Live contract addresses
 - 🔗 [Links](links.md) - All related resources in one place

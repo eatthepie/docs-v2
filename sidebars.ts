@@ -28,7 +28,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "💻 Smart Contracts",
+      label: "⛓️ Smart Contracts",
       items: [
         "smart-contracts/lottery-contract",
         "smart-contracts/vdf-contract",
