@@ -4,7 +4,7 @@ import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
   title: "Eat The Pie Docs",
-  tagline: "The fully trustless world lottery running on Ethereum",
+  tagline: "The world lottery on Ethereum",
   favicon: "img/favicon.ico",
   url: "https://docs.eatthepie.xyz",
   baseUrl: "/",
@@ -49,19 +49,19 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
-  plugins: [
-    [
-      "@docusaurus/plugin-client-redirects",
-      {
-        redirects: [
-          {
-            from: "/",
-            to: "/eat-the-pie-overview/what-is-it",
-          },
-        ],
-      },
-    ],
-  ],
+  // plugins: [
+  //   [
+  //     "@docusaurus/plugin-client-redirects",
+  //     {
+  //       redirects: [
+  //         {
+  //           from: "/",
+  //           to: "/eat-the-pie-overview/what-is-it",
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // ],
 };
 
 export default config;

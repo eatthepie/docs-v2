@@ -1,41 +1,28 @@
-# Website
+![Eat The Pie](https://github.com/eatthepie/docs/blob/main/static/img/header.png)
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+# Eat the Pie Documentation
 
-### Installation
+This repository contains the documentation for Eat the Pie, built using [Docusaurus](https://docusaurus.io/). The documentation contains all information on how the lottery works, from gameplay to technical implementation.
 
-```
-$ yarn
-```
+## 🚀 Quick Start
 
-### Local Development
+```bash
+# Install dependencies
+npm install
 
-```
-$ yarn start
-```
-
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-### Build
-
-```
-$ yarn build
+# Start development server
+npm start
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+## 📚 Documentation Structure
 
-### Deployment
+- **Overview** - Introduction to Eat the Pie
+- **Gameplay** - Rules, prizes, and how to play
+- **Security** - How we ensure fairness
+- **Smart Contracts** - Technical implementation details
+- **Deployments** - Live contract addresses
+- **Links** - Additional resources
 
-Using SSH:
+## 📄 License
 
-```
-$ USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+MIT
