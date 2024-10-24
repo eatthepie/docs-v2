@@ -2,11 +2,11 @@
 
 ## 🎯 Introduction
 
-The integrity of any lottery system hinges on one crucial aspect: how the winning numbers are drawn. For a lottery to be trustworthy, this process must be provably fair, meaning it's both random and beyond anyone's control. Achieving this level of fairness is an incredibly complex challenge, but through the combination of Ethereum's blockchain technology and Verifiable Delay Functions (VDFs), we've created a system that sets a new standard for lottery security.
+At the heart of every lottery is its random number generation - the crucial mechanism that determines winners. While traditional lotteries rely on central authorities, Eat the Pie harnesses Ethereum's decentralized network of validators and Verifiable Delay Functions (VDFs) to ensure true randomness. This creates a provably fair system where no single entity can influence the outcome.
 
 ## 🌐 Why Ethereum?
 
-Ethereum stands out as the ideal platform for our lottery system due to its nature as a truly decentralized blockchain. In this ecosystem:
+Ethereum stands out as the ideal platform for this lottery system due to its nature as a truly decentralized blockchain. In this ecosystem:
 
 - 🔒 No single entity can control or manipulate the system.
 - 👁️ Transactions and smart contract executions are transparent and verifiable.
@@ -14,60 +14,109 @@ Ethereum stands out as the ideal platform for our lottery system due to its natu
 
 ## 🛡️ Enhancing Security with VDFs
 
-While Ethereum provides a robust base, we've added an extra layer of security by implementing Verifiable Delay Functions (VDFs). This technology prevents any possibility of validator collusion, further solidifying the integrity of our lottery.
+Running a transparent lottery on a blockchain faces one critical challenge: achieving 100% random outcomes that no party can predict. This raises two key questions: How can validators be prevented from gaining any advantage? And how can the settling block's validator's integrity be ensured?
 
-## 🔢 The Drawing Process: A Deep Dive
+Eat the Pie solves this through Verifiable Delay Functions (VDFs), creating a calculated time barrier between game completion and number generation. This engineered delay effectively neutralizes any potential validator influence. While this means waiting slightly longer for results, it guarantees absolute fairness and trustworthiness in every draw.
 
-Let's break down the intricate process of how we generate our random winning numbers:
+## 🔢 The Drawing Process
+
+Let's break down the intricate process of how random winning numbers are generated:
+
 <br />
-<img src="/img/security.svg" alt="Eat The Pie Process" width="900" />
+<img src="/img/security.svg" alt="Eat The Pie Process" width="800" />
 <br />
 
 1. **🚀 Initiating the Draw**
 
-   - Function: `initiateDraw()`
+   - Game threshold is met and function: <b>`initiateDraw()`</b> gets called.
    - At a predetermined block (let's call it block X), this function is called to start the drawing process.
-   - We implement a delay of approximately 4 epochs (~30 minutes) before using the randomness output from the Ethereum block.
-   - Purpose of Delay: To minimize the potential for validators to influence the `block.prevrandao` value, preventing any actors from gaining an unfair advantage by purchasing tickets right before the draw.
+   - The system waits 4 epochs (~30 minutes) before using the [RANDAO value](https://eth2book.info/bellatrix/part2/building_blocks/randomness/) from <b>`block.prevrandao`</b>.
+   - Purpose of Delay: To minimize the predictability and biasability of <b>`block.prevrandao`</b>.
 
 2. **🎲 Setting the Random Value**
 
-   - Function: `setRandom()`
-   - After the delay period (at block Y), we capture the `block.prevrandao` value.
-   - This value serves as the input for our Pietrzak VDF function.
+   - Once the 4 epochs delay has passed, function: <b>`setRandom()`</b> gets called.
+   - This sets the <b>`block.prevrandao`</b> value that will serve as the input of the VDF function.
+   - At this point, the game is settled, but nobody knows the numbers until somebody solves the VDF.
 
 3. **⏳ VDF Computation**
 
-   - The VDF output is computed off-chain.
-   - We've intentionally set the parameters to make this computation time-intensive (several hours to a day).
-   - This extended computation time is a critical security feature, ensuring the integrity of the game even as hardware and software improvements accelerate computation speeds.
+   - The VDF gets computed offchain (by anyone) using the <b>`block.prevrandao`</b> from above.
+   - The parameters of the VDF have been intentionally set to make this computation time-intensive (depending on hardware, can range from several hours to a day).
+   - This extended computation time is a critical security feature, ensuring that improvements in future hardware and software implementation still make this unbreakable.
 
 4. **✅ Submitting and Verifying the VDF Proof**
 
-   - Function: `submitVDFProof()`
-   - At block Z, an actor submits the results of the VDF function.
-   - Our on-chain VDF verifier checks the validity of this output.
+   - Someone finally has a proof and submits it onchain via the function: <b>`submitVDFProof()`</b>
+   - Only if the proof is valid do the numbers then get revealed and committed.
 
 5. **🏁 Finalizing the Draw**
-   - If the VDF proof is correct, the winning numbers are computed and set.
-   - The system calculates payouts based on these numbers.
-   - Users can then claim their prizes.
+   - Anyone can now call the function <b>`calculatePayouts()`</b>, which settles the prizes and winners.
+   - The round is over and users can then claim their prizes.
+
+> **Note**: The entire process is public and permissionless. Any participant can help progress the game state by calling these functions.
 
 ## 🧠 Key Concepts Explained
 
-### 🔢 block.prevrandao
+### 🔢 RANDAO and block.prevrandao
 
-`block.prevrandao` is a value in Ethereum blocks that provides a source of randomness. It's derived from the beacon chain's randomness and is considered secure against most forms of manipulation.
+<b>`block.prevrandao`</b> serves as Ethereum's built-in randomness source, powered by the beacon chain's RANDAO mechanism:
+
+- Generated from thousands of validator contributions
+- Changes every block (~12 seconds)
+- Manipulation-resistant by design
+- Unpredictable beyond one epoch
+- Provides verifiable randomness at the protocol level
+
+Want to learn more? Check out these resources:
+
+- [Deep dive into RANDAO](https://eth2book.info/bellatrix/part2/building_blocks/randomness/)
+- [EIP 4399: Supplant DIFFICULTY opcode with PREVRANDAO](https://eips.ethereum.org/EIPS/eip-4399)
+- [Video explanation of RANDAO](https://www.youtube.com/watch?v=rUOBPu4W28c)
 
 ### ⏱️ VDF (Verifiable Delay Function)
 
-A VDF is a function that takes a minimum amount of time to compute, even on a parallel computer, but can be quickly verified. In our lottery, it serves as a crucial tool to prevent any form of prediction or manipulation of the winning numbers.
+The lottery implements the [Pietrzak VDF](https://eprint.iacr.org/2018/627.pdf), a cryptographic function that enforces a time delay between input and output. Think of it as a cryptographic time-lock that ensures fairness through forced computation time.
 
-## 🤔 Why This Approach is Necessary
+#### Key Properties
 
-1. **🚫 Eliminates Insider Advantages**: No one, not even the lottery operators, can predict or influence the outcome.
-2. **🏃‍♂️ Prevents Front-Running**: The delay and VDF computation time prevent actors from gaining an advantage by quickly buying tickets right before the draw.
-3. **🔍 Ensures Verifiability**: Every step of the process can be independently verified, ensuring transparency.
-4. **💪 Resists Technological Advances**: The time-intensive nature of the VDF computation ensures security even as computing power increases.
+1. **Sequential Computation**
 
-By combining Ethereum's decentralized nature with the security properties of VDFs, we've created a lottery system that sets new standards for fairness, transparency, and security in the world of digital gambling. 🎉
+   - Operations must be performed in order
+   - Cannot be parallelized or shortened
+   - Hardware improvements don't significantly impact minimum time
+
+2. **Efficient Verification**
+
+   - Verification takes milliseconds
+   - On-chain verification possible
+   - Compact proofs (~1kb)
+   - Low gas costs for submission
+
+3. **Deterministic Security**
+   - Consistent input/output mapping
+   - Future-proof design principles
+   - No hidden randomness in computation
+
+Want to learn more? Check out these resources:
+
+- [VDF Research Blog](https://vdfresearch.org/)
+- [Video explanation of VDFs](https://www.youtube.com/watch?v=qf1CN5n8aHM)
+
+## 🤔 Why This Approach Matters
+
+### 1. 🛡️ Validator Neutralization
+
+The combination of RANDAO and VDF ensures that validators cannot predict or influence the outcome, maintaining true randomness in the drawing process.
+
+### 2. 🔒 Front-Running Prevention
+
+The mandatory computation delay creates a temporal barrier that prevents any form of front-running or last-minute exploitation.
+
+### 3. 🔍 Complete Verifiability
+
+Every step in the process can be independently verified on-chain, ensuring transparency without compromising security.
+
+### 4. 💪 Future-Proof Design
+
+The time-locked nature of VDF computation maintains security even as computational power advances, protecting against future technological improvements.

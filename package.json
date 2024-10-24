@@ -1,6 +1,6 @@
 {
-  "name": "a",
-  "version": "0.0.0",
+  "name": "Eat The Pie docs",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",

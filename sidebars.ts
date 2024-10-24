@@ -6,24 +6,18 @@ const sidebars: SidebarsConfig = {
     {
       type: "category",
       label: "🎮 Gameplay",
-      items: ["gameplay/rules", "gameplay/prizes", "gameplay/odds"],
+      items: [
+        "gameplay/rules",
+        "gameplay/prizes",
+        "gameplay/odds",
+        "gameplay/how-to-play",
+      ],
       collapsed: true,
     },
     {
       type: "category",
       label: "🛡️ Security",
       items: ["security/drawing-numbers", "security/open-source"],
-      collapsed: true,
-    },
-    {
-      type: "category",
-      label: "📖 How to Play",
-      items: [
-        "how-to-play/overview",
-        "how-to-play/website",
-        "how-to-play/cli",
-        "how-to-play/vdfs",
-      ],
       collapsed: true,
     },
     {

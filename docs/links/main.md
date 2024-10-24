@@ -1,9 +1,5 @@
 # 🔗 Links
 
-This section provides quick access to various resources related to the EatThePie Lottery project. Please find the relevant links below:
-
-## Project Resources
-
 ### Smart Contracts
 
 📁 GitHub Repository: `https://github.com/eatthepie/smart-contracts`

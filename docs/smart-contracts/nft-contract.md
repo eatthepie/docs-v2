@@ -1,107 +1,89 @@
 # NFT
 
-## Overview
+Github Link: [https://github.com/eatthepie/contracts/blob/main/src/NFTPrize.sol](https://github.com/eatthepie/contracts/blob/main/src/NFTPrize.sol)
 
-The NFTPrize contract is an ERC721-compliant smart contract that represents winning lottery tickets as unique, dynamically generated NFTs. This contract is a crucial component of the EatThePie Lottery system, creating visually appealing and informative tokens for jackpot winners.
+The NFT contract implements an ERC721 contract to mint NFTs for jackpot winners. Each NFT features dynamically generated SVG artwork displaying the winning numbers in a unique quadrant-based design.
 
 ## Key Features
 
-- 🎨 Dynamic SVG generation for each NFT
-- 🔢 Unique visual representation of winning numbers
-- 🏆 Stores game number, winning numbers, and payout for each token
-- 🔐 Minting restricted to the main Lottery contract
-- 🖼️ On-chain storage of SVG paths for numbers
+- 🎨 Dynamic SVG generation
+- 🔢 Custom number rendering system
 
 ## Contract Structure
 
 ### Inheritance
 
-- ERC721: Standard implementation of the ERC721 Non-Fungible Token Standard
+- `ERC721`: OpenZeppelin's ERC721 implementation
 
-### Key State Variables
+### Dependencies
 
-- `numberSVGs`: Mapping of digits to their SVG representations
-- `lotteryContract`: Address of the authorized Lottery contract
-- `tokenGameNumbers`: Mapping of token IDs to their respective game numbers
-- `tokenWinningNumbers`: Mapping of token IDs to the winning numbers
-- `tokenPayouts`: Mapping of token IDs to payout amounts
+- `@openzeppelin/contracts/token/ERC721/ERC721.sol`
+- `@openzeppelin/contracts/utils/Base64.sol`
+- `@openzeppelin/contracts/utils/Strings.sol`
+
+### Key Data Structures
+
+```solidity
+struct NumberSVG {
+    bytes path;
+    uint256 width;
+}
+```
+
+- `path`: SVG path data for rendering a number
+- `width`: Width of the number's SVG representation
+
+### State Variables
+
+```solidity
+mapping(uint256 => NumberSVG) private numberSVGs;
+address public lotteryContract;
+bool private initialized;
+mapping(uint256 => uint256) private tokenGameNumbers;
+mapping(uint256 => uint256[4]) private tokenWinningNumbers;
+mapping(uint256 => uint256) private tokenPayouts;
+```
 
 ## Core Functionality
 
 ### Initialization
 
-The contract is initialized with SVG paths for digits 0-9 in the constructor. The Lottery contract address must be set separately using `setLotteryContract`.
+```solidity
+function setLotteryContract(address _lotteryContract) external
+```
+
+- Sets the authorized lottery contract address
+- Can only be called once
+- Required before minting can begin
 
 ### NFT Minting
 
 ```solidity
-function mintNFT(address winner, uint256 tokenId, uint256 gameNumber, uint256[4] calldata winningNumbers, uint256 payout) external
+function mintNFT(
+    address winner,
+    uint256 tokenId,
+    uint256 gameNumber,
+    uint256[4] calldata winningNumbers,
+    uint256 payout
+) external
 ```
 
-This function mints a new NFT representing a winning lottery ticket. It can only be called by the authorized Lottery contract.
+- Only callable by lottery contract
+- Mints NFT to winner's address
+- Stores game details and winning numbers
+- Records payout amount
 
-### Token URI Generation
+### Metadata Generation
 
 ```solidity
-function tokenURI(uint256 tokenId) public view virtual override returns (string memory)
+function tokenURI(uint256 tokenId) public view returns (string memory)
 ```
 
-Generates a base64-encoded JSON metadata string for each token, including:
-
-- Name
-- Description
-- Dynamically generated SVG image
-- Attributes (Game Number, Payout, Winning Numbers)
-
-### SVG Generation
-
-The contract dynamically generates SVG images for each NFT, featuring:
-
-- A quadrant layout with different colors
-- Winning numbers displayed in each quadrant
-- Centered and scaled number representations
-
-## Key Functions
-
-### `generateImageURI`
-
-Constructs the complete SVG image and encodes it as a data URI.
-
-### `generateQuadrantSVG`
-
-Creates the main SVG structure with colored quadrants.
-
-### `generateQuadrants`
-
-Generates individual quadrants with numbers.
-
-### `generateNumberSVG`
-
-Produces SVG representation for a single number within a quadrant.
-
-### `getDigitPaths` and `getTotalWidth`
-
-Helper functions for assembling and sizing number SVGs.
-
-## Security Measures
-
-- Only the authorized Lottery contract can mint NFTs
-- Contract must be initialized with the Lottery contract address before minting
-- Use of `_safeMint` to prevent minting to non-receiving addresses
-
-## Unique Aspects
-
-1. **On-Chain SVG Generation**: All image data is generated and stored on-chain, ensuring permanent availability.
-2. **Dynamic Styling**: Each NFT has a unique appearance based on its winning numbers.
-3. **Efficient Storage**: SVG paths for digits are stored once and reused, optimizing gas costs.
-4. **Quadrant Design**: The four-quadrant layout provides a visually appealing and information-rich representation.
-
-## Use Cases
-
-1. **Proof of Winning**: Serves as a verifiable proof of winning a jackpot in the EatThePie Lottery.
-2. **Collectible Item**: Unique and visually appealing NFTs that can be collected or traded.
-3. **Historical Record**: Provides an on-chain record of lottery winners and their winning numbers.
-
-## Conclusion
-
-The NFTPrize contract adds significant value to the EatThePie Lottery ecosystem by creating unique, visually appealing, and informative NFTs for jackpot winners. Its on-chain SVG generation and efficient storage mechanisms make it a noteworthy implementation of dynamic NFT creation in the blockchain space.
+- Returns base64-encoded JSON metadata
+- Includes:
+  - Name with game number
+  - Description
+  - Dynamic SVG image
+  - Game attributes
+  - Winning numbers
+  - Payout amount

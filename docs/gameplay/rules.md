@@ -1,6 +1,6 @@
 # Rules
 
-Once the lottery starts, it never ends. When a game concludes, the next one begins automatically. As long as Ethereum runs, there will always be a game in play.
+Like Ethereum itself, Eat the Pie never pauses. When one game ends, the next one simultaneously begins, ensuring there's always an active round to join.
 
 ## 🕒 Game Duration and Prize Pool
 
@@ -17,9 +17,7 @@ Once the lottery starts, it never ends. When a game concludes, the next one begi
 ## 🎰 Drawing, Winners and Payouts
 
 - Once both the 1-week duration and 500 ETH thresholds are met, the drawing begins 🏁
-- The process to reveal the random numbers is done through a secure VDF computation that can take several hours
+- The process to reveal the random numbers is done through a secure VDF computation
 - For more details on the drawing process, see the [Drawing section](drawing.md) 🔍
 - Once complete: Winning numbers are revealed 🔓, payouts are calculated 🧮, and winners can claim prizes 🏆
-- If nobody wins, the prize pool gets transferred to the current ongoing game
-
-> **Remember**: Eat the Pie is 100% decentralized and autonomous. Smart contracts enforce all rules, ensuring fairness and transparency for every player! 🤖🔐
+- If nobody wins, the prize pool gets transferred to the next game

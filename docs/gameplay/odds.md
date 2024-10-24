@@ -17,7 +17,7 @@ The game adapts to maintain an optimal balance:
 - 📈 **Increase Difficulty**: After 3 consecutive games with jackpot winners
 - 📉 **Decrease Difficulty**: After 3 consecutive games without jackpot winners
 
-> The lottery starts on Easy difficulty. This system ensures the game remains fun and the jackpot enticing!
+> The lottery starts on Easy mode. This mechanism ensures the game remains fun and the jackpot enticing!
 
 ## 🧮 Odds of Winning
 
@@ -40,5 +40,3 @@ Imagine the prize pool has reached 10,000 ETH and the game is at Medium difficul
 |  Jackpot (60%)   |  6,000 ETH   | 1 in 100,000,000 |
 | 3 in a Row (25%) |  2,500 ETH   |  1 in 1,000,000  |
 | 2 in a Row (14%) |  1,400 ETH   |   1 in 10,000    |
-
-> **Remember**: These prizes are shared if there are multiple winners in a category. The bigger the prize pool grows, the more you stand to win!

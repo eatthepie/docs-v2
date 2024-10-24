@@ -3,13 +3,11 @@ slug: /
 sidebar_label: Overview
 ---
 
-# Eat the Pie: The World's First Truly Decentralized Lottery
+# Eat the Pie: The World Lottery on Ethereum
 
-Welcome to Eat the Pie, a revolutionary lottery experience powered by blockchain technology. This platform represents a paradigm shift in online gaming, offering unprecedented levels of fairness, transparency, and accessibility.
+Welcome to Eat the Pie - a fully autonomous lottery protocol powered by blockchain technology. Built on Ethereum's security and driven by Verifiable Delay Functions (VDFs), the system ensures complete transparency and verifiable randomness. Every draw is autonomous, every transaction is traceable, and participation is open to all. Let's dive into how everything works.
 
 ## What Sets Eat the Pie Apart
-
-Eat the Pie isn't just another lottery—it's an autonomous system that redefines how lotteries operate:
 
 - **100% Decentralized**: No central authority or middlemen—just players and the blockchain.
 - **Unmatched Transparency**: Every aspect of the lottery is open-source and publicly verifiable.
@@ -21,9 +19,8 @@ Eat the Pie isn't just another lottery—it's an autonomous system that redefine
 
 ## Explore Eat the Pie
 
-- 🎮 [Gameplay](gameplay/overview.md) - The rules and mechanics of the game
-- 🛡️ [Security](security.md) - How Ethereum and VDFs create an impenetrable lottery
-- 📖 [How to Play](how-to-play/website.md) - A step-by-step guide to participating
-- ⛓️ [Smart Contract Modules](smart-contract-modules.md) - The technical architecture behind the scenes
+- 🎮 [Gameplay](gameplay/rules.md) - The rules of the game and how to participate
+- 🛡️ [Security](security/drawing-numbers.md) - How Ethereum and VDFs create an impenetrable lottery
+- ⛓️ [Smart Contract](smart-contract-modules.md) - The technical architecture behind the scenes
 - 🌐 [Deployments](deployments.md) - Live contract addresses
 - 🔗 [Links](links.md) - All related resources in one place

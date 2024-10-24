@@ -1,74 +1,90 @@
-# Pietrzak VDF
+# VDF Pietrzak Library
 
-The PietrzakLibrary contains the core logic for verifying the Verifiable Delay Function (VDF) proof. Let's break down its key components and the verification process.
+Github Link: [https://github.com/eatthepie/contracts/blob/main/src/libraries/PietrzakLibrary.sol](https://github.com/eatthepie/contracts/blob/main/src/libraries/PietrzakLibrary.sol)
 
-### Key Functions
+The PietrzakLibrary implements the core verification logic for Pietrzak's Verifiable Delay Function (VDF). This library provides the mathematical operations and verification procedures necessary for validating VDF proofs in an efficient and secure manner.
 
-1. `verify`: The main function that implements the VDF verification algorithm.
-2. `log2`: Computes the base-2 logarithm of a number.
-3. `_hash128`: Generates a 128-bit hash from three byte arrays.
+_Adapted from [usgeeus/Pietrzak-VDF-solidity-verifier](https://github.com/usgeeus/Pietrzak-VDF-solidity-verifier)_
 
-### Verification Process Explained
+## Core Functions
 
-The `verify` function is the heart of the VDF verification. Here's a step-by-step breakdown of how it works:
+### VDF Verification
 
-1. **Initialization**:
+```solidity
+function verify(
+    BigNumber[] memory v,
+    BigNumber memory x,
+    BigNumber memory y,
+    BigNumber memory n,
+    uint256 delta,
+    uint256 T
+) internal view returns (bool)
+```
 
-   - `tau = log2(T)`: Calculates the number of iterations in the binary representation of T.
-   - `iMax = tau - delta`: Determines the number of verification steps to perform.
+#### Parameters
 
-2. **Main Verification Loop**:
-   The loop runs `iMax` times, each iteration representing a halving of the remaining iterations.
+- `v`: Array of intermediate values in the VDF computation
+- `x`: Initial input value (RANDAO value)
+- `y`: Claimed output value
+- `n`: RSA modulus
+- `delta`: Number of iterations to skip in verification
+- `T`: Total number of iterations
 
-   a. **Challenge Generation**:
+#### Returns
 
-   - `_r = _hash128(x.val, y.val, v[i].val)`: Creates a random challenge based on the current state.
+- `bool`: True if the proof is valid, false otherwise
 
-   b. **State Update**:
+#### Verification Process
 
-   - `x = (x^r * v[i]) mod n`: Updates x using modular exponentiation and multiplication.
-   - `y = ((v[i]^r) * y) mod n`: Updates y similarly.
-   - If T is odd, an additional squaring of y is performed.
+1. **Initialization**
 
-   c. **Iteration Halving**:
+   - Calculates tau (log2 of total iterations)
+   - Determines maximum iterations for verification
+   - Sets up BigNumber representation of 2
 
-   - `T = T >> 1`: Halves the remaining iterations.
+2. **Main Verification Loop**
 
-3. **Final Verification**:
-   - Computes `2^delta` to account for the skipped iterations.
-   - Checks if `y == x^(2^(2^delta)) mod n`.
+   - Computes random challenges using \_hash128
+   - Updates x and y based on challenges and intermediate values
+   - Performs modular arithmetic operations
+   - Halves T in each iteration
 
-### Key Concepts in the Verification
+3. **Final Verification**
+   - Computes 2^delta efficiently
+   - Verifies final relationship between x and y
 
-1. **Iterative Halving**:
-   The algorithm doesn't verify every step of the VDF computation. Instead, it halves the problem size in each iteration, allowing for efficient verification.
+### Helper Functions
 
-2. **Random Challenges**:
-   The `_r` value introduces randomness in each step, making it computationally infeasible to forge a proof without actually computing the full VDF.
+#### Log2 Calculation
 
-3. **Modular Arithmetic**:
-   All operations are performed modulo n (the RSA modulus), leveraging the hardness of the RSA problem for security.
+```solidity
+function log2(uint256 value) internal pure returns (uint256)
+```
 
-4. **Skipping with Delta**:
-   The `delta` parameter allows skipping the last few iterations, significantly reducing verification time with minimal security impact.
+- Efficiently computes base-2 logarithm
+- Uses bit manipulation for performance
+- Processes in power-of-2 steps (128, 64, 32, etc.)
 
-### Security Properties
+#### Hash128 Generation
 
-1. **Soundness**:
-   The random challenges and the final check ensure that it's computationally infeasible to produce a valid proof without computing the entire VDF.
+```solidity
+function _hash128(
+    bytes memory a,
+    bytes memory b,
+    bytes memory c
+) internal pure returns (BigNumber memory)
+```
 
-2. **Completeness**:
-   A correctly computed VDF will always pass the verification process.
+- Computes 128-bit hash from three inputs
+- Uses keccak256 for hashing
+- Returns last 16 bytes as BigNumber
 
-3. **Time-Hardness**:
-   The repeated squaring operations in the full VDF computation (not shown in the verification) ensure a minimum computation time.
+#### Boolean to Uint Conversion
 
-### Efficiency Considerations
+```solidity
+function toUint(bool b) internal pure returns (uint256 u)
+```
 
-- The verification is much faster than the full VDF computation, typically by a factor of about `T / log(T)`.
-- The use of `delta` further reduces verification time, especially for large T values.
-- Modular exponentiations are the most computationally expensive operations in the verification.
-
-## Conclusion
-
-The PietrzakLibrary implements a clever and efficient verification algorithm for the VDF. By using iterative halving and random challenges, it achieves a balance between security and efficiency. This verification process is crucial for ensuring the integrity and unpredictability of the lottery outcomes in the EatThePie system.
+- Converts boolean to uint256 (0 or 1)
+- Uses assembly for gas optimization
+- Memory-safe implementation

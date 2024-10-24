@@ -1,32 +1,40 @@
 # VDF
 
-## Overview
+Github Link: [https://github.com/eatthepie/contracts/blob/main/src/VDFPietrzak.sol](https://github.com/eatthepie/contracts/blob/main/src/VDFPietrzak.sol)
 
-The VDFPietrzak contract implements Pietrzak's Verifiable Delay Function (VDF), a crucial component in generating provably random and unpredictable outcomes for the EatThePie Lottery system. This contract leverages the RSA-2048 Factoring Challenge for its security properties.
+The VDFPietrzak contract implements the [VDF Pietzrak Library](smart-contracts/pietzrak-library.md). This contract uses the [RSA-2048 Factoring Challenge number](https://en.wikipedia.org/wiki/RSA_numbers#RSA-2048) as its modulus, providing a trusted setup for the VDF calculations.
 
-## Key Concepts
+## Key Features
 
-- 🕰️ **Verifiable Delay Function (VDF)**: A function that takes a guaranteed minimum time to compute, even on a parallel computer, but can be quickly verified.
-- 🔢 **RSA-2048 Challenge**: A large semiprime number used as the modulus for VDF computations, providing a strong cryptographic foundation.
-- ⏳ **Time-Hardness**: The VDF ensures a delay between input and output, crucial for preventing manipulation in lottery systems.
+- 🔒 Based on RSA-2048 Factoring Challenge
+- ✅ Fast verification process
+- 🔄 Sequential computation requirement
+- 🛡️ Cryptographically secure parameters
 
 ## Contract Structure
 
-### Libraries
+### Dependencies
 
-- `BigNumbers`: Used for handling large number arithmetic operations.
-- `PietrzakLibrary`: Contains the core VDF verification logic.
+- `PietrzakLibrary`: Library implementing the core VDF calculations
+- `BigNumbers`: Library for handling large number operations
 
-### Key Constants
+### Constants
 
-- `nBytes`: The RSA-2048 challenge number in bytes.
-- `nBitLength`: The bit length of the RSA modulus (2048 bits).
-- `delta`: Number of iterations to skip in verification (4).
-- `T`: Total number of iterations in VDF computation (2^20 = 1,048,576).
+#### RSA Modulus
 
-### Structs
+```solidity
+bytes public constant nBytes = hex"c7970ceedcc3b0754490201a7aa613cd73911081c790f5f1a8726f463550bb5b7ff0db8e1ea1189ec72f93d1650011bd721aeeacc2acde32a04107f0648c2813a31f5b0b7765ff8b44b4b6ffc93384b646eb09c7cf5e8592d40ea33c80039f35b4f14a04b51f7bfd781be4d1673164ba8eb991c2c4d730bbbe35f592bdef524af7e8daefd26c66fc02c479af89d64d373f442709439de66ceb955f3ea37d5159f6135809f85334b5cb1813addc80cd05609f10ac6a95ad65872c909525bdad32bc729592642920f24c61dc5b3c3b7923e56b16a4d9d373d8721f24a3fc0f1b3131f55615172866bccc30f95054c824e733a5eb6817f7bc16399d48c6361cc7e5"
+```
 
-- `BigNumberInput`: Represents large numbers with their byte value and bit length.
+- Uses the RSA-2048 Factoring Challenge number
+- Provides a widely trusted and verifiable modulus
+- 2048-bit length ensures strong security
+
+#### VDF Parameters
+
+- `nBitLength`: 2048 (bit length of RSA modulus)
+- `delta`: 4 (verification skip parameter)
+- `T`: 1048576 (2^20) (total iterations)
 
 ## Core Functionality
 
@@ -34,72 +42,48 @@ The VDFPietrzak contract implements Pietrzak's Verifiable Delay Function (VDF), 
 
 ```solidity
 function verifyPietrzak(
-    BigNumberInput[] memory v,
-    BigNumberInput memory x,
-    BigNumberInput memory y
+    BigNumber[] memory v,
+    BigNumber memory x,
+    BigNumber memory y
 ) external view returns (bool)
 ```
 
-This function verifies a Pietrzak VDF proof:
+#### Parameters
 
-- `v`: Array of intermediate values in the VDF computation.
-- `x`: Initial input to the VDF.
-- `y`: Purported output of the VDF.
-- Returns `true` if the proof is valid, `false` otherwise.
+- `v`: Array of intermediate values in the VDF computation
+- `x`: Initial input to the VDF (RANDAO value)
+- `y`: Purported output of the VDF
 
-## How It Works
+#### Returns
 
-1. **Setup**:
+- `bool`: True if the proof is valid, false otherwise
 
-   - Uses the RSA-2048 challenge number as the modulus (n).
-   - Defines parameters like delta (skip factor) and T (total iterations).
+#### Process
 
-2. **Verification Process**:
+1. Creates BigNumber representation of RSA modulus
+2. Delegates verification to PietrzakLibrary
+3. Performs efficient proof verification
 
-   - Converts input parameters to `BigNumber` format.
-   - Calls `PietrzakLibrary.verify()` to perform the actual verification.
+## Technical Details
 
-3. **PietrzakLibrary.verify()**:
-   - Implements the Pietrzak VDF verification algorithm.
-   - Performs a series of modular exponentiations and multiplications.
-   - Uses a challenge-response mechanism to verify the computation's integrity.
+### VDF Properties
 
-## Security Considerations
+1. **Fast Verification**
 
-1. **RSA-2048 Challenge**:
+   - Uses skip parameter (delta) for efficient verification
+   - Verification time logarithmic in total iterations
+   - Much faster than computation time
 
-   - Provides a trusted, large semiprime number.
-   - Factoring this number is considered computationally infeasible, ensuring the security of the VDF.
+2. **Security Guarantees**
+   - Based on time-lock puzzles
+   - Uses trusted RSA modulus
+   - Provably secure under standard assumptions
 
-2. **Time-Hardness**:
+### RSA Modulus
 
-   - The large number of iterations (T = 2^20) ensures a significant delay between input and output.
-   - This delay prevents players or validators from predicting or manipulating lottery outcomes.
+The contract uses the RSA-2048 Factoring Challenge number as its modulus, which provides several benefits:
 
-3. **Verification Efficiency**:
-   - The `delta` parameter allows for efficient verification by skipping iterations.
-   - Balances the trade-off between prover computation time and verifier efficiency.
-
-## Use in the Lottery System
-
-1. **Random Number Generation**:
-
-   - VDF is applied to a public, unpredictable input (e.g., block hash).
-   - The output serves as the source of randomness for lottery draws.
-
-2. **Fairness Guarantee**:
-
-   - Ensures that lottery outcomes cannot be predicted or manipulated, even by the contract deployer or miners.
-
-3. **Verifiable Fairness**:
-   - Anyone can verify the correctness of the lottery draw by checking the VDF proof.
-
-## Technical Notes
-
-- The contract uses advanced cryptographic concepts and big number arithmetic.
-- Gas consumption for verification can be high due to complex calculations.
-- The security of the system relies on the continued difficulty of factoring the RSA-2048 number.
-
-## Conclusion
-
-The VDFPietrzak contract is a critical component of the EatThePie Lottery system, providing a cryptographically secure and verifiable source of randomness. Its implementation of Pietrzak's VDF ensures that lottery outcomes are fair, unpredictable, and resistant to manipulation, while still being publicly verifiable.
+- Widely studied and trusted
+- No known factorization
+- Public verification of parameters
+- Adequate size for security
