@@ -2,10 +2,10 @@
 
 To participate in the lottery, you have a few options:
 
-1. **Web Interface** 🌐 Visit our website at [eatthepie.xyz](https://eatthepie.xyz), [or on IPFS](https://eatthepie.xyz), [or on Arweave](https://eatthepie.xyz)
+1. **Web Interface** 🌐 Visit the website at [eatthepie.xyz](https://eatthepie.xyz), [or on IPFS](https://eatthepie.xyz), [or on Arweave](https://eatthepie.xyz)
 
 2. **Command Line Interface (CLI)** 💻 For tech-savvy users, you can interact with it directly in your terminal!
-   - Install our CLI app using npm:
+   - Install the CLI app using npm:
      ```
      npm install -g eatthepie
      ```

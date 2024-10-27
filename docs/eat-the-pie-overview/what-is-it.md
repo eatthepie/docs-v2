@@ -5,7 +5,7 @@ sidebar_label: Overview
 
 # Eat the Pie: The World Lottery on Ethereum
 
-Welcome to Eat the Pie - a fully autonomous lottery protocol powered by blockchain technology. Built on Ethereum's security and driven by Verifiable Delay Functions (VDFs), the system ensures complete transparency and verifiable randomness. Every draw is autonomous, every transaction is traceable, and participation is open to all. Let's dive into how everything works.
+Welcome to Eat the Pie — a fully autonomous lottery protocol powered by blockchain technology. Built on Ethereum's security and driven by Verifiable Delay Functions (VDFs), the system ensures complete transparency and verifiable randomness. Every draw is autonomous, every transaction is traceable, and participation is open to all. Let's dive into how everything works.
 
 ## What Sets Eat the Pie Apart
 
@@ -14,8 +14,8 @@ Welcome to Eat the Pie - a fully autonomous lottery protocol powered by blockcha
 - **Self-Executing**: Autonomous operations ensure continuous, tamper-proof gameplay.
 - **Ethereum-Secured**: Leveraging the world's most robust blockchain for unparalleled security.
 - **Minimal Fees**: Maximum 1% fee (capped at 100 ETH), compared to up to 40% in traditional lotteries.
-- **Global Access**: Participate from anywhere with just an Ethereum wallet.
-- **Provably Fair**: Utilizes Verifiable Delay Functions (VDFs) for truly random and tamper-proof number generation.
+- **Global Access**: Anyone can participate from anywhere with just an [Ethereum wallet](https://ethereum.org/en/wallets/).
+- **Provably Fair**: Verifiable Delay Functions (VDFs) ensures truly random and tamper-proof number generation.
 
 ## Explore Eat the Pie
 

@@ -31,7 +31,7 @@ Your chances of winning vary based on the current difficulty level. Here's a bre
 
 ## 💰 Understanding Your Chances
 
-While the odds may seem long, remember that the prize pool grows with each ticket purchase! Let's break it down with a simple example:
+While the odds may seem low, remember that the prize pool grows with each ticket purchased. Let's break it down with a simple example.
 
 Imagine the prize pool has reached 10,000 ETH and the game is at Medium difficulty. Here's what you could win with a single ticket:
 

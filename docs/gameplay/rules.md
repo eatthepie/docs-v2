@@ -1,6 +1,6 @@
 # Rules
 
-Like Ethereum itself, Eat the Pie never pauses. When one game ends, the next one simultaneously begins, ensuring there's always an active round to join.
+Like Ethereum itself, Eat the Pie never pauses. When one game ends, the next one automatically begins, ensuring there's always an active round to join.
 
 ## 🕒 Game Duration and Prize Pool
 
@@ -11,7 +11,7 @@ Like Ethereum itself, Eat the Pie never pauses. When one game ends, the next one
 
 - **Cost**: Each ticket is **0.1 ETH** 💸
 - **Quantity**: Buy as many as you want! 🛒 No limits!
-- **Pick 4 Numbers** for each ticket 🎱🎱🎱🎱
+- **For each ticket** Either pick 4 numbers or choose to auto-generate numbers 🎱🎱🎱🎱
 - The range of numbers you can select from is based on the current difficulty (see [Odds of Winning](odds.md) for details) 🔄
 
 ## 🎰 Drawing, Winners and Payouts

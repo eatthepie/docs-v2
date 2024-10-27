@@ -2,9 +2,9 @@
 
 Github Link: [https://github.com/eatthepie/contracts/blob/main/src/libraries/PietrzakLibrary.sol](https://github.com/eatthepie/contracts/blob/main/src/libraries/PietrzakLibrary.sol)
 
-The PietrzakLibrary implements the core verification logic for Pietrzak's Verifiable Delay Function (VDF). This library provides the mathematical operations and verification procedures necessary for validating VDF proofs in an efficient and secure manner.
+_Code adapted from [usgeeus/Pietrzak-VDF-solidity-verifier](https://github.com/usgeeus/Pietrzak-VDF-solidity-verifier)_
 
-_Adapted from [usgeeus/Pietrzak-VDF-solidity-verifier](https://github.com/usgeeus/Pietrzak-VDF-solidity-verifier)_
+The PietrzakLibrary implements the core verification logic for Pietrzak's Verifiable Delay Function (VDF). This library provides the mathematical operations and verification procedures necessary for validating VDF proofs in an efficient and secure manner.
 
 ## Core Functions
 

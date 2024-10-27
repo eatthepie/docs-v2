@@ -88,7 +88,7 @@ function initiateDraw() external
 function setRandom(uint256 gameNumber) external
 ```
 
-- Uses Ethereum's PREVRANDAO for initial randomness
+- Uses Ethereum's block.prevrandao for randomness
 - Must be called after security buffer period
 
 3. VDF Proof Submission
@@ -119,7 +119,6 @@ function claimPrize(uint256 gameNumber) external
 ```
 
 - Allows winners to claim their prizes
-- Supports multiple prize tier winnings
 - Prevents double claiming
 - Emits `PrizeClaimed` event
 
@@ -139,7 +138,7 @@ function changeDifficulty() external
 
 - Automatically adjusts difficulty based on win patterns
 - Requires 3 consecutive games for adjustment
-- Changes take effect after a delay
+- Changes take effect on the next game
 - Emits `DifficultyChanged` event
 
 ### Administrative Functions
@@ -171,30 +170,6 @@ function getDetailedGameInfo(uint256 gameId) external view returns (GameDetailed
 ```solidity
 function getUserGameWinnings(uint256 gameNumber, address user) external view
 ```
-
-## Security Features
-
-1. **Reentrancy Protection**
-
-   - Uses OpenZeppelin's ReentrancyGuard
-   - Applied to all state-modifying functions
-
-2. **Drawing Security**
-
-   - 128-block delay after draw initiation
-   - VDF verification for randomness
-   - PREVRANDAO as additional entropy source
-
-3. **Prize Distribution**
-
-   - Automatic excess fee handling
-   - Secure prize claiming mechanism
-   - Protection against double-claiming
-
-4. **Administrative Controls**
-   - Time-locked changes for critical parameters
-   - Limited owner functions
-   - Transparent fee management
 
 ## Events
 
