@@ -16,6 +16,20 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
+      label: "💻 Comand Line App",
+      items: [
+        "command-line-app/install",
+        "command-line-app/setup",
+        "command-line-app/core",
+        "command-line-app/prize",
+
+        "command-line-app/draw",
+        "command-line-app/settings",
+      ],
+      collapsed: true,
+    },
+    {
+      type: "category",
       label: "🛡️ Security",
       items: ["security/drawing-numbers", "security/open-source"],
       collapsed: true,

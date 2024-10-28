@@ -49,19 +49,6 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
-  // plugins: [
-  //   [
-  //     "@docusaurus/plugin-client-redirects",
-  //     {
-  //       redirects: [
-  //         {
-  //           from: "/",
-  //           to: "/eat-the-pie-overview/what-is-it",
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // ],
 };
 
 export default config;

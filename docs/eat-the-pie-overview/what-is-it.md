@@ -20,6 +20,7 @@ Welcome to Eat the Pie — a fully autonomous lottery protocol powered by blockc
 ## Explore Eat the Pie
 
 - 🎮 [Gameplay](gameplay/rules.md) - The rules of the game and how to participate
+- 💻 [Command Line App](command-line-app/install.md) - Interact with Eat The Pie in your terminal
 - 🛡️ [Security](security/drawing-numbers.md) - How Ethereum and VDFs create an impenetrable lottery
 - ⛓️ [Smart Contract](smart-contract-modules.md) - The technical architecture behind the scenes
 - 🌐 [Deployments](deployments.md) - Live contract addresses
