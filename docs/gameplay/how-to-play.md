@@ -2,7 +2,11 @@
 
 To participate in the lottery, you have a few options:
 
-1. **Web Interface** 🌐 Visit the website at [eatthepie.xyz](https://eatthepie.xyz), [or on IPFS](https://eatthepie.xyz), [or on Arweave](https://eatthepie.xyz)
+1. **Web Interface** 🌐
+
+   - Main website: [eatthepie.xyz](https://www.eatthepie.xyz)
+   - IPFS: [eatthepie.eth.limo](https://eatthepie.eth.limo)
+   - IPFS Hash: `bafybeigearodnnti3mzkd73iwbxtp27z5qfewwrtt44m7ukklsrcwhaeca`
 
 2. **Command Line Interface (CLI)** 💻 For tech-savvy users, you can interact with it directly in your terminal!
    - Install the CLI app using npm:

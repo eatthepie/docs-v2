@@ -1,25 +1,30 @@
 # 🔗 Links
 
-### Smart Contracts
+## 🌐 Web Access
 
-📁 GitHub Repository: `https://github.com/eatthepie/smart-contracts`
+| Resource      | URL                                              |
+| ------------- | ------------------------------------------------ |
+| Main Website  | [www.eatthepie.xyz](https://www.eatthepie.xyz)   |
+| Documentation | [docs.eatthepie.xyz](https://docs.eatthepie.xyz) |
+| IPFS Gateway  | [eatthepie.eth.limo](https://eatthepie.eth.limo) |
 
-### Website
+## 📦 IPFS Details
 
-🌐 Main Website: `https://www.eatthepielottery.com`
+- **Hash**: `bafybeigearodnnti3mzkd73iwbxtp27z5qfewwrtt44m7ukklsrcwhaeca`
 
-### IPFS Deployment
+## 💻 Source Code Repositories
 
-🔗 IPFS Link: `ipfs://Qm...`
+### Core Components
 
-### VDF Prover
+| Component       | Repository                                                               |
+| --------------- | ------------------------------------------------------------------------ |
+| Smart Contracts | [github.com/eatthepie/contracts](https://github.com/eatthepie/contracts) |
+| Web Application | [github.com/eatthepie/web-app](https://github.com/eatthepie/web-app)     |
+| Documentation   | [github.com/eatthepie/docs](https://github.com/eatthepie/docs)           |
 
-🧮 GitHub Repository: `https://github.com/eatthepie/vdf-prover`
+### Tools & Utilities
 
-### CLI Application
-
-💻 GitHub Repository: `https://github.com/eatthepie/cli-app`
-
-### Documentation
-
-📚 Official Docs: `https://docs.eatthepielottery.com`
+| Tool            | Repository                                                     |
+| --------------- | -------------------------------------------------------------- |
+| VDF Prover      | [github.com/eatthepie/vdfs](https://github.com/eatthepie/vdfs) |
+| CLI Application | [github.com/eatthepie/cli](https://github.com/eatthepie/cli)   |

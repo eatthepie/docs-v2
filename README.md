@@ -23,6 +23,10 @@ npm start
 - **Deployments** - Live contract addresses
 - **Links** - Additional resources
 
+## 🌐 Docs Deployments
+
+- **Website**: [docs.eatthepie.xyz](https://docs.eatthepie.xyz)
+
 ## 📄 License
 
 MIT
