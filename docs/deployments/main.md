@@ -1,12 +1,20 @@
 # 🌐 Deployments
 
-### 🌍 Ethereum Mainnet
+### 🔹 Ethereum Mainnet
 
 | Contract Type | Address                                                                                                                 |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | 🎲 Lottery    | [`0x043c9ae2764B5a7c2d685bc0262F8cF2f6D86008`](https://etherscan.io/address/0x043c9ae2764B5a7c2d685bc0262F8cF2f6D86008) |
 | ⏱️ VDF        | [`0x2f22c37eA674C6977368D3873219c0595A5465F3`](https://etherscan.io/address/0x2f22c37eA674C6977368D3873219c0595A5465F3) |
 | 🎨 NFT        | [`0xc690cf57CcB5AC272f58b9F8509e2cb516cD0112`](https://etherscan.io/address/0xc690cf57CcB5AC272f58b9F8509e2cb516cD0112) |
+
+### 🌍 World Chain
+
+| Contract Type | Address                                                                                                                  |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| 🎲 Lottery    | [`0xB3406E515b7fA46c0Ba0E8A65e15D459A44E2de4`](https://worldscan.org/address/0xB3406E515b7fA46c0Ba0E8A65e15D459A44E2de4) |
+| ⏱️ VDF        | [`0xF8dd992D8742D735C308f22650Ce9Fee5D61bc28`](https://worldscan.org/address/0xF8dd992D8742D735C308f22650Ce9Fee5D61bc28) |
+| 🎨 NFT        | [`0x35AB41C4cfEF24387E0add87F13BBb57A2bb25d9`](https://worldscan.org/address/0x35AB41C4cfEF24387E0add87F13BBb57A2bb25d9) |
 
 ### 🔷 Sepolia Testnet
 
@@ -28,6 +36,13 @@ All contracts are verified and open source on Etherscan. Click any contract addr
 - Chain ID: 1
 - Currency: ETH
 - Block Explorer: [Etherscan](https://etherscan.io)
+
+### World Chain
+
+- Network Name: World Chain
+- Chain ID: 480
+- Currency: WLD
+- Block Explorer: [Worldscan](https://worldscan.org)
 
 ### Sepolia
 

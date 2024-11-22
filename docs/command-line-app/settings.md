@@ -63,7 +63,7 @@ If conditions aren't met:
 Cannot change difficulty yet. Not enough games played or too soon since last change.
 ```
 
-## Tips 💡
+#### Tips 💡
 
 - Conditions required for difficulty change:
   - Easy → Medium: 3 consecutive jackpot wins

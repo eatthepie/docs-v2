@@ -46,7 +46,7 @@ Block Number: 1234567
 Transaction confirmed successfully!
 ```
 
-## Tips 💡
+#### Tips 💡
 
 - Make sure the numbers you pick are within the valid ranges
 - Make sure your wallet has enough ETH to cover the purchase amount and gas fees

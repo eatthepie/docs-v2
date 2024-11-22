@@ -2,11 +2,12 @@
 
 ## 🌐 Web Access
 
-| Resource      | URL                                              |
-| ------------- | ------------------------------------------------ |
-| Main Website  | [www.eatthepie.xyz](https://www.eatthepie.xyz)   |
-| Documentation | [docs.eatthepie.xyz](https://docs.eatthepie.xyz) |
-| IPFS Gateway  | [eatthepie.eth.limo](https://eatthepie.eth.limo) |
+| Resource                    | URL                                                |
+| --------------------------- | -------------------------------------------------- |
+| Ethereum Lottery Website    | [www.eatthepie.xyz](https://www.eatthepie.xyz)     |
+| World Chain Lottery Website | [world.eatthepie.xyz](https://world.eatthepie.xyz) |
+| Documentation               | [docs.eatthepie.xyz](https://docs.eatthepie.xyz)   |
+| IPFS Gateway (for Ethereum) | [eatthepie.eth.limo](https://eatthepie.eth.limo)   |
 
 ## 📦 IPFS Details
 
@@ -16,11 +17,12 @@
 
 ### Core Components
 
-| Component       | Repository                                                               |
-| --------------- | ------------------------------------------------------------------------ |
-| Smart Contracts | [github.com/eatthepie/contracts](https://github.com/eatthepie/contracts) |
-| Web Application | [github.com/eatthepie/web-app](https://github.com/eatthepie/web-app)     |
-| Documentation   | [github.com/eatthepie/docs](https://github.com/eatthepie/docs)           |
+| Component         | Repository                                                                             |
+| ----------------- | -------------------------------------------------------------------------------------- |
+| Mainnet Contracts | [github.com/eatthepie/contracts](https://github.com/eatthepie/contracts)               |
+| Layer 2 Contracts | [github.com/eatthepie/contracts-layer2](https://github.com/eatthepie/contracts-layer2) |
+| Web Application   | [github.com/eatthepie/web-app](https://github.com/eatthepie/web-app)                   |
+| Documentation     | [github.com/eatthepie/docs](https://github.com/eatthepie/docs)                         |
 
 ### Tools & Utilities
 

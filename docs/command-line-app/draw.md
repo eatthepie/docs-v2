@@ -14,7 +14,7 @@ Transaction Hash: 0x123...abc
 Draw initiated successfully!
 ```
 
-## Tips 💡
+#### Tips 💡
 
 - Make sure both conditions are met before initiating:
   - Minimum time interval has passed (check with `status` command)
@@ -42,7 +42,7 @@ Transaction Hash: 0x123...abc
 RANDAO value set successfully!
 ```
 
-## Tips 💡
+#### Tips 💡
 
 - RANDAO values can only be set after the buffer period (128 blocks) has passed
 - Make sure draw has been initiated first using the `initiate-draw` command
@@ -66,7 +66,7 @@ Transaction Hash: 0x123...abc
 VDF proof submitted successfully!
 ```
 
-## Tips 💡
+#### Tips 💡
 
 - Make sure the RANDAO value has been set before submitting the VDF proof
 - The proof file (proof.json) must be generated using the [VDF prover tool](https://github.com/eatthepie/vdfs)
@@ -90,7 +90,7 @@ Game 1 VDF verified successfully!
 Winning Numbers: 7, 23, 25, 12
 ```
 
-## Tips 💡
+#### Tips 💡
 
 - This command is used to verify proofs of past games
 - To submit a proofs for the current game, use the `submit-vdf-proof` command instead
@@ -124,7 +124,7 @@ Jackpot Winners: 1 (10.0 ETH each)
 2-in-a-row Winners: 2 (1.0 ETH each)
 ```
 
-## Tips 💡
+#### Tips 💡
 
 - Make sure the game's VDF proof has been submitted and validated first
 - Once calculated, players can claim prizes

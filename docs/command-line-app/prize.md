@@ -20,7 +20,7 @@ Transaction Hash: 0x123...abc
 Prize claimed successfully!
 ```
 
-## Tips 💡
+#### Tips 💡
 
 - Make sure the game draw is completed before attempting to claim
 - You can only claim a prize once
@@ -54,7 +54,7 @@ If you weren't a jackpot winner:
 Only jackpot winners can mint a NFT.
 ```
 
-## Tips 💡
+#### Tips 💡
 
 - Make sure you have enough ETH in your wallet to cover gas fees
 - The NFT will appear in your wallet once the transaction is confirmed
