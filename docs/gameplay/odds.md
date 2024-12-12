@@ -25,9 +25,9 @@ Your chances of winning vary based on the current difficulty level. Here's a bre
 
 |      Prize       |     Easy     |     Medium     |      Hard      |
 | :--------------: | :----------: | :------------: | :------------: |
-|  Jackpot (60%)   | 1 in 138,000 | 1 in 1,225,000 | 1 in 3,723,000 |
-| 3 in a Row (25%) |  1 in 2,760  |  1 in 24,500   |  1 in 74,460   |
-| 2 in a Row (14%) |   1 in 600   |   1 in 2,450   |   1 in 5,550   |
+|  Jackpot (60%)   | 1 in 156,250 | 1 in 1,250,000 | 1 in 4,218,750 |
+| 3 in a Row (25%) | 1 in 15,625  |  1 in 125,000  |  1 in 421,875  |
+| 2 in a Row (14%) |   1 in 625   |   1 in 2,500   |   1 in 5,625   |
 
 ## 💰 Understanding Your Chances
 
@@ -37,6 +37,6 @@ Imagine the prize pool has reached 10,000 ETH and the game is at Medium difficul
 
 |  Prize Category  | Prize Amount |  Your Chances  |
 | :--------------: | :----------: | :------------: |
-|  Jackpot (60%)   |  6,000 ETH   | 1 in 1,225,000 |
-| 3 in a Row (25%) |  2,500 ETH   |  1 in 24,500   |
-| 2 in a Row (14%) |  1,400 ETH   |   1 in 2,450   |
+|  Jackpot (60%)   |  6,000 ETH   | 1 in 1,250,000 |
+| 3 in a Row (25%) |  2,500 ETH   |  1 in 125,000  |
+| 2 in a Row (14%) |  1,400 ETH   |   1 in 2,500   |
