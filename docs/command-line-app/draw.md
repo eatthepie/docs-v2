@@ -1,7 +1,7 @@
 # Draw & Verification Commands
 
 <details>
-<summary><h3>🎲 Initiate Draw</h3>Start the drawing process.</summary>
+<summary><h3>🚀 Initiate Draw</h3>Start the drawing process.</summary>
 
 ```sh
 $ eatthepie initiate-draw

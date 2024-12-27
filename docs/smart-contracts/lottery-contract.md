@@ -1,21 +1,22 @@
 # Lottery
 
-Github Link: [https://github.com/eatthepie/contracts/blob/main/src/Lottery.sol](https://github.com/eatthepie/contracts/blob/main/src/Lottery.sol)
+Github Link: [https://github.com/eatthepie/contracts-layer2/blob/main/src/Lottery.sol](https://github.com/eatthepie/contracts-layer2/blob/main/src/Lottery.sol)
 
-This contract implements the core features of the Eat The Pie lottery.
+This contract implements the core features of the Eat The Pie L2 lottery system.
 
 ## Key Features
 
 - 🎟️ Multiple ticket purchase support (up to 100 tickets per transaction)
 - 🔢 Three difficulty levels affecting number ranges (Easy, Medium, Hard)
-- 🔐 Secure random number generation using VDFs and RANDAO
+- 🎲 Secure random number generation using Witnet
 - 💰 Three-tiered prize system (Gold, Silver, Bronze)
 - 🏆 NFT minting for jackpot winners
 - 🔄 Automatic difficulty adjustment based on win patterns
-- 💸 Configurable ticket pricing with scheduled changes
-- 🛡️ Comprehensive security measures
+- 💸 Configurable token-based ticket pricing with scheduled changes
+- 🛡️ Comprehensive security measures with Permit2 integration
 - 💎 Prize pool management with excess handling
 - 🔍 Detailed game information tracking and querying
+- ⏮️ Emergency refund system
 
 ## Contract Structure
 
@@ -26,9 +27,10 @@ This contract implements the core features of the Eat The Pie lottery.
 
 ### Dependencies
 
-- `VDFPietrzak`: Contract for VDF calculations and verification
+- `IWitnetRandomness`: Contract for secure randomness generation
 - `NFTPrize`: Contract for minting prize NFTs
-- `BigNumbers`: Library for handling large number operations
+- `IERC20`: Interface for ERC20 token payments
+- `IPermit2`: Interface for gasless approvals
 
 ### Constants
 
@@ -37,19 +39,17 @@ This contract implements the core features of the Eat The Pie lottery.
 - `SILVER_PLACE_PERCENTAGE`: 2500 (25% of prize pool)
 - `BRONZE_PLACE_PERCENTAGE`: 1400 (14% of prize pool)
 - `FEE_PERCENTAGE`: 100 (1% of prize pool)
-- `FEE_MAX_IN_ETH`: 100 ether
+- `FEE_MAX_IN_TOKENS`: 1,000,000 tokens
 - Difficulty-based number ranges:
-  - Easy: 1-50 (main), 1-5 (etherball)
-  - Medium: 1-100 (main), 1-10 (etherball)
-  - Hard: 1-150 (main), 1-15 (etherball)
-- `DRAW_MIN_PRIZE_POOL`: 500 ether
-- `DRAW_MIN_TIME_PERIOD`: 1 week
-- `DRAW_DELAY_SECURITY_BUFFER`: 128 blocks
+  - Easy: 1-25 (main), 1-10 (etherball)
+  - Medium: 1-50 (main), 1-10 (etherball)
+  - Hard: 1-75 (main), 1-10 (etherball)
+- `DRAW_MIN_TIME_PERIOD`: 4 days
 
 ### Key State Variables
 
 - `currentGameNumber`: Current game identifier
-- `ticketPrice`: Price of a single ticket
+- `ticketPrice`: Price of a single ticket in tokens
 - `lastDrawTime`: Timestamp of the last draw
 - `consecutiveJackpotGames`: Counter for consecutive games with jackpot winners
 - `consecutiveNonJackpotGames`: Counter for consecutive games without jackpot winners
@@ -61,10 +61,15 @@ This contract implements the core features of the Eat The Pie lottery.
 ### Ticket Purchase
 
 ```solidity
-function buyTickets(uint256[4][] calldata tickets) external payable
+function buyTickets(
+    uint256[4][] calldata tickets,
+    IPermit2.PermitTransferFrom calldata permit,
+    bytes calldata signature
+) external nonReentrant
 ```
 
 - Allows purchase of up to 100 tickets in one transaction
+- Uses Permit2 for gasless token approvals
 - Each ticket requires 4 numbers (3 main numbers + 1 etherball)
 - Automatically tracks tickets for all prize tiers
 - Emits `TicketPurchased` and `TicketsPurchased` events
@@ -74,37 +79,28 @@ function buyTickets(uint256[4][] calldata tickets) external payable
 1. Draw Initiation
 
 ```solidity
-function initiateDraw() external
+function initiateDraw() external payable nonReentrant
 ```
 
-- Requires minimum prize pool (500 ETH)
-- Requires minimum time period (1 week)
-- Sets up security delay buffer
+- Requires minimum time period (4 days)
+- Initiates Witnet randomness request
 - Starts the next game
+- Emits `DrawInitiated` event
 
 2. Random Value Setting
 
 ```solidity
-function setRandom(uint256 gameNumber) external
+function setRandomAndWinningNumbers(uint256 gameNumber) external
 ```
 
-- Uses Ethereum's block.prevrandao for randomness
-- Must be called after security buffer period
+- Fetches randomness from Witnet
+- Sets winning numbers
+- Emits `WinningNumbersSet` event
 
-3. VDF Proof Submission
-
-```solidity
-function submitVDFProof(uint256 gameNumber, BigNumber[] memory v, BigNumber memory y) external
-```
-
-- Verifies VDF proof by calling the [VDF contract](smart-contracts/vdf-contract.md)
-- Generates final winning numbers
-- Sets game status to completed
-
-4. Payout Calculation
+3. Payout Calculation
 
 ```solidity
-function calculatePayouts(uint256 gameNumber) external
+function calculatePayouts(uint256 gameNumber) external nonReentrant
 ```
 
 - Calculates prizes for each tier
@@ -115,7 +111,7 @@ function calculatePayouts(uint256 gameNumber) external
 ### Prize Claiming
 
 ```solidity
-function claimPrize(uint256 gameNumber) external
+function claimPrize(uint256 gameNumber) external nonReentrant
 ```
 
 - Allows winners to claim their prizes
@@ -123,12 +119,29 @@ function claimPrize(uint256 gameNumber) external
 - Emits `PrizeClaimed` event
 
 ```solidity
-function mintWinningNFT(uint256 gameNumber) external
+function mintWinningNFT(uint256 gameNumber) external nonReentrant
 ```
 
 - Available only to gold tier winners
-- Mints unique NFT by calling the [NFT contract](smart-contracts/nft-contract)
+- Mints unique NFT through NFTPrize contract
 - Emits `NFTMinted` event
+
+### Emergency Functions
+
+```solidity
+function stopGameAndEnableRefunds(uint256 targetGame) external onlyOwner
+```
+
+- Allows owner to stop current or next game
+- Enables refund mechanism for players
+
+```solidity
+function refundTickets(uint256 gameNumber) external nonReentrant
+```
+
+- Allows players to refund tickets for stopped games
+- Updates prize pool accordingly
+- Emits `TicketsRefunded` event
 
 ### Difficulty Management
 
@@ -144,7 +157,6 @@ function changeDifficulty() external
 ### Administrative Functions
 
 - `setTicketPrice`: Schedules ticket price changes
-- `setNewVDFContract`: Updates VDF contract with delay
 - `setFeeRecipient`: Updates fee recipient address
 
 ### Query Functions
@@ -160,15 +172,18 @@ function getCurrentGameInfo() external view returns (
 ```
 
 ```solidity
-function getBasicGameInfo(uint256 startGameId, uint256 endGameId) external view returns (GameBasicInfo[] memory)
+function getBasicGameInfo(uint256 startGameId, uint256 endGameId)
+    external view returns (GameBasicInfo[] memory)
 ```
 
 ```solidity
-function getDetailedGameInfo(uint256 gameId) external view returns (GameDetailedInfo memory)
+function getDetailedGameInfo(uint256 gameId)
+    external view returns (GameDetailedInfo memory)
 ```
 
 ```solidity
-function getUserGameWinnings(uint256 gameNumber, address user) external view
+function getUserGameWinnings(uint256 gameNumber, address user)
+    external view returns (bool, bool, bool, uint256, bool)
 ```
 
 ## Events
@@ -177,7 +192,6 @@ function getUserGameWinnings(uint256 gameNumber, address user) external view
 - `TicketsPurchased`: Bulk ticket purchase information
 - `DrawInitiated`: Start of drawing process
 - `RandomSet`: Initial random value set
-- `VDFProofSubmitted`: VDF verification complete
 - `WinningNumbersSet`: Final winning numbers
 - `DifficultyChanged`: Difficulty level updates
 - `TicketPriceChangeScheduled`: Future price changes
@@ -186,3 +200,6 @@ function getUserGameWinnings(uint256 gameNumber, address user) external view
 - `FeeRecipientChanged`: Fee recipient updates
 - `PrizeClaimed`: Winner prize claims
 - `NFTMinted`: NFT prize creation
+- `GameStopped`: Emergency game stoppage
+- `GameRefundsEnabled`: Refund availability
+- `TicketsRefunded`: Ticket refund processing

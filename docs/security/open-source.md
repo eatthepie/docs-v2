@@ -10,7 +10,7 @@ The entire codebase is open source and freely available for anyone to review, an
 
 ## 🏗️ Immutable Smart Contracts
 
-The smart contracts, once deployed on the Ethereum blockchain, are non-upgradable. This means:
+The smart contracts, once deployed are non-upgradable. This means:
 
 - 🛑 The core functionality cannot be altered
 - 🔒 Lottery rules are permanently set
@@ -21,7 +21,6 @@ The smart contracts, once deployed on the Ethereum blockchain, are non-upgradabl
 To maintain maximum decentralization and trustlessness, admin capabilities are limited to three essential functions:
 
 1. **Adjust Ticket Price** 🎟️ - Allows adaptation to ETH price volatility while maintaining accessibility.
-2. **Update VDF Function** 🔄 - Enables quantum-resistance upgrades to maintain long-term security.
-3. **Change Fee Recipient Address** 💳
+2. **Change Fee Recipient Address** 💳
 
-> **Note**: Both 1 and 2 require a 10 game buffer period before changes go into effect.
+> **Note**: #1 require a 10 game buffer period before changes go into effect.

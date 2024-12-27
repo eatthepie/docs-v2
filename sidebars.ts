@@ -31,7 +31,11 @@ const sidebars: SidebarsConfig = {
     {
       type: "category",
       label: "🛡️ Security",
-      items: ["security/drawing-numbers", "security/open-source"],
+      items: [
+        "security/drawing-numbers",
+        "security/witnet-oracles",
+        "security/open-source",
+      ],
       collapsed: true,
     },
     {
@@ -39,8 +43,6 @@ const sidebars: SidebarsConfig = {
       label: "⛓️ Smart Contracts",
       items: [
         "smart-contracts/lottery-contract",
-        "smart-contracts/vdf-contract",
-        "smart-contracts/pietrzak-library",
         "smart-contracts/nft-contract",
       ],
       collapsed: true,
