@@ -33,10 +33,10 @@ Your chances of winning vary based on the current difficulty level. Here's a bre
 
 While the odds may seem low, remember that the prize pool grows with each ticket purchased. Let's break it down with a simple example.
 
-Imagine the prize pool has reached 10,000 ETH and the game is at Medium difficulty. Here's what you could win with a single ticket:
+Imagine the prize pool has reached 1m WLD and the game is at Medium difficulty. Here's what you could win with a single ticket:
 
 |  Prize Category  | Prize Amount |  Your Chances  |
 | :--------------: | :----------: | :------------: |
-|  Jackpot (60%)   |  6,000 ETH   | 1 in 1,250,000 |
-| 3 in a Row (25%) |  2,500 ETH   |  1 in 125,000  |
-| 2 in a Row (14%) |  1,400 ETH   |   1 in 2,500   |
+|  Jackpot (60%)   |   600k WLD   | 1 in 1,250,000 |
+| 3 in a Row (25%) |   250k WLD   |  1 in 125,000  |
+| 2 in a Row (14%) |   140k WLD   |   1 in 2,500   |

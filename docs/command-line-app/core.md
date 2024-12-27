@@ -93,8 +93,6 @@ Status: Completed
 Prize Pool: 15.5 ETH
 Difficulty: Easy (1-25)
 Draw Initiated Block: 1234567
-RANDAO Block: 1234568
-RANDAO Value: 123456789
 
 Winning Numbers: 7, 23, 45, 12
 Number of Winners: 5 (Jackpot: 1, 3 in-a-row: 2, 2 in-a-row: 2)

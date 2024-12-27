@@ -42,9 +42,7 @@ $ eatthepie mint-nft         # Get your winner's NFT 🖼️
 
 ```sh
 $ eatthepie initiate-draw     # Start the drawing process
-$ eatthepie set-randao        # Set RANDAO value
-$ eatthepie submit-vdf-proof  # Submit VDF proof
-$ eatthepie verify-vdf        # Verify VDF proof
+$ eatthepie complete-draw     # Complete the drawing process
 $ eatthepie calculate-payouts # Calculate prize distribution
 ```
 

@@ -16,6 +16,6 @@ Prize pool is made up of all the ticket purchases for the game. Here's how the p
 
 ## 💸 Fees
 
-- A 1% fee is applied to the total prize pool, capped at 100 ETH max. Anything in excess of 100 ETH is automatically allocated to the prize pool.
+- A 1% fee is applied to the total prize pool, capped at 1m WLD max. Anything in excess of 1m WLD is automatically allocated to the prize pool.
 
-> **Example**: If the total pool is 15,000 ETH, the fee would be 100 ETH instead of 150 ETH. The extra 50 ETH is put back into the prize pool, making the total prize pool 14,900 ETH.
+> **Example**: If the total pool is 150m WLD, the fee would be 1m WLD instead of 150m WLD. The extra 50m WLD is put back into the prize pool, making the total prize pool 149m WLD.

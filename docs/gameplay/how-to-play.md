@@ -2,11 +2,7 @@
 
 To participate in the lottery, you have a few options:
 
-1. **Web Interface** 🌐
-
-   - Main website: [eatthepie.xyz](https://www.eatthepie.xyz)
-   - IPFS: [eatthepie.eth.limo](https://eatthepie.eth.limo)
-   - IPFS Hash: `bafybeigearodnnti3mzkd73iwbxtp27z5qfewwrtt44m7ukklsrcwhaeca`
+1. **[World App](https://world.org/ecosystem/app_74972466e1918df102d112861a422403)** 🌐
 
 2. **Command Line Interface (CLI)** 💻 For tech-savvy users, you can interact with it directly in your terminal!
    - Install the CLI app using npm:
@@ -17,7 +13,3 @@ To participate in the lottery, you have a few options:
      ```
      eatthepie
      ```
-
-## 🧮 VDF Proof Computation
-
-Each game is settled once someone submits a valid VDF proof. Anyone can participate in this process by being the one to generate the proofs with the [code here](https://github.com/eatthepie/vdf-proofs).
