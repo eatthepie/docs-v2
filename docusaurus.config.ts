@@ -4,12 +4,12 @@ import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
   title: "Eat The Pie Docs",
-  tagline: "The world lottery on Ethereum",
+  tagline: "The world lottery on World Chain",
   favicon: "img/favicon.ico",
   url: "https://docs.eatthepie.xyz",
   baseUrl: "/",
   organizationName: "eatthepie",
-  projectName: "docs",
+  projectName: "docs-v2",
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "ignore",
   i18n: {
