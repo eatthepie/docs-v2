@@ -20,7 +20,7 @@ The smart contracts, once deployed are non-upgradable. This means:
 
 To maintain maximum decentralization and trustlessness, admin capabilities are limited to three essential functions:
 
-1. **Adjust Ticket Price** 🎟️ - Allows adaptation to ETH price volatility while maintaining accessibility.
+1. **Adjust Ticket Price** 🎟️ - Allows adaptation to WLD price volatility while maintaining accessibility.
 2. **Change Fee Recipient Address** 💳
 
 > **Note**: #1 require a 10 game buffer period before changes go into effect.

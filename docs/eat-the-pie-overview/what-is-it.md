@@ -12,7 +12,7 @@ Welcome to Eat the Pie — a fully autonomous lottery protocol powered by blockc
 - **100% Decentralized**: No central authority or middlemen—just players and the blockchain.
 - **Unmatched Transparency**: Every aspect of the lottery is open-source and publicly verifiable.
 - **Self-Executing**: Autonomous operations ensure continuous, tamper-proof gameplay.
-- **Minimal Fees**: Maximum 1% fee (capped at 100 ETH), compared to up to 40% in traditional lotteries.
+- **Minimal Fees**: Maximum 1% fee (capped at 1m WLD), compared to up to 40% in traditional lotteries.
 - **Global Access**: Anyone can participate from anywhere via the [World App](https://world.org/ecosystem/app_74972466e1918df102d112861a422403).
 - **Provably Fair**: Witnet randomness oracles ensures lottery numbers are generated with true randomness.
 

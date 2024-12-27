@@ -10,7 +10,7 @@ $ eatthepie buy
 When you execute the command, you'll be guided through the buy process:
 
 ```sh
-Current ticket price: 0.1 ETH
+Current ticket price: 0.1 WLD
 Current difficulty: Easy (1-25)
 Valid number range: 1-25, Etherball: 1-10
 
@@ -30,7 +30,7 @@ Review your tickets before purchase:
 Tickets to purchase:
 Ticket 1: 7, 23, 5, 9
 Ticket 2: 3, 15, 20, 8
-Total cost: 0.2 ETH
+Total cost: 0.2 WLD
 
 Do you want to proceed with the purchase? (Y/n)
 ```
@@ -49,7 +49,7 @@ Transaction confirmed successfully!
 #### Tips 💡
 
 - Make sure the numbers you pick are within the valid ranges
-- Make sure your wallet has enough ETH to cover the purchase amount and gas fees
+- Make sure your wallet has enough WLD to cover the purchase amount and gas fees
 </details>
 
 <details>
@@ -65,7 +65,7 @@ When you execute the command, you'll see the status of the currentt ongoing roun
 Status:
 Current Game Round: 2
 Difficulty: Easy (1-25)
-Prize Pool: 10.5 ETH
+Prize Pool: 10.5 WLD
 Next Possible Draw Time: 10/29/2024, 3:00:00 PM
 Time Until Draw: 2 hours, 15 minutes
 ```
@@ -90,13 +90,13 @@ The output will show all game information:
 ```sh
 Game 2 Information:
 Status: Completed
-Prize Pool: 15.5 ETH
+Prize Pool: 15.5 WLD
 Difficulty: Easy (1-25)
 Draw Initiated Block: 1234567
 
 Winning Numbers: 7, 23, 45, 12
 Number of Winners: 5 (Jackpot: 1, 3 in-a-row: 2, 2 in-a-row: 2)
-Payouts: Jackpot: 10.0 ETH, 3 in-a-row: 2.5 ETH, 2 in-a-row: 1.0 ETH
+Payouts: Jackpot: 10.0 WLD, 3 in-a-row: 2.5 WLD, 2 in-a-row: 1.0 WLD
 ```
 
 </details>
@@ -122,7 +122,7 @@ Congratulations, you won!
 Jackpot: Yes
 3 in-a-row: No
 2 in-a-row: No
-Total Prize: 10.5 ETH
+Total Prize: 10.5 WLD
 Claimed: No
 
 Don't forget to claim your prize!

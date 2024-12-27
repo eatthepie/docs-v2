@@ -25,7 +25,7 @@ Prize claimed successfully!
 - Make sure the game draw is completed before attempting to claim
 - You can only claim a prize once
 - Use the `did-i-win` command first to check if you have any prizes to claim
-- Double-check your wallet has enough ETH for gas fees
+- Double-check your wallet has enough WLD for gas fees
 </details>
 
 <details>
@@ -56,7 +56,7 @@ Only jackpot winners can mint a NFT.
 
 #### Tips 💡
 
-- Make sure you have enough ETH in your wallet to cover gas fees
+- Make sure you have enough WLD in your wallet to cover gas fees
 - The NFT will appear in your wallet once the transaction is confirmed
 - You can view the NFT on popular NFT marketplaces like OpenSea
 </details>
